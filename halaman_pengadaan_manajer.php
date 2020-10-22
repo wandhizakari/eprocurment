@@ -25,7 +25,7 @@
 		echo'<p style="color:red">Gagal Memasukan data</p>';
 	}
       // query SQL menampilkan data dari table tbl_biodata
-      $sql = "SELECT * FROM pengadaan  WHERE status = 'unapproved";
+      $sql = "SELECT * FROM pengadaan  WHERE status = 'unapprove'";
       // tampung data (dalam array) kedalam variable $biodata
       $biodata = mysqli_query($koneksi, $sql);
       // variable untuk membuat tabel HTML

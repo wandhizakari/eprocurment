@@ -28,7 +28,7 @@
 		}
 	}
       // query SQL menampilkan data dari table tbl_biodata
-      $sql = "SELECT * FROM pengadaan  WHERE status = 'unapproved";
+      $sql = "SELECT * FROM pengadaan  WHERE status = 'unapprove'";
       // tampung data (dalam array) kedalam variable $biodata
       $biodata = mysqli_query($koneksi, $sql);
       // variable untuk membuat tabel HTML
@@ -60,7 +60,7 @@
 		  $strTbl .= "<td>". $data['tanggal_pengadaan'] ."</td>";
 		  $strTbl .= "<td>Wandhi</td>";
 		  $strTbl .= "<td>". $data['status'] ."</td>";
-          $strTbl .= "<td><a href='Fungsi/edit_status_pengadaan.php?id=".$data['id_pengadaan']."&status=approved'>Approve</a> | <a href='detail.php?id=".$data['id_pengadaan']."&status=approved'>Lihat Detail</a></td>";
+          $strTbl .= "<td> <a href='detail.php?id=".$data['id_pengadaan']."&status=approved'>Lihat Detail</a></td>";
           $strTbl .= "</tr>";
           $nomor++;
         }
