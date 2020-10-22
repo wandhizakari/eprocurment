@@ -9,7 +9,6 @@
 	include 'koneksi.php';
 	error_reporting(0);
 
-
 	// cek apakah yang mengakses halaman ini sudah login
 	if($_SESSION['level']==""){
 		header("location:index.php?pesan=gagal");
@@ -23,9 +22,7 @@
 	if($_GET['message']){
 		echo'<p style="color:green">Data berhasil Dimasukan</p>';
 	}else{
-		if(isset($_GET['message'])){
 		echo'<p style="color:red">Gagal Memasukan data</p>';
-		}
 	}
       // query SQL menampilkan data dari table tbl_biodata
       $sql = "SELECT * FROM pengadaan  WHERE status = 'unapproved";
@@ -121,31 +118,6 @@
       print($strTbl);
 		
 	?>
-	<h3>Input data baru</h3>
-	<form action="Fungsi/input_pengadaan.php" method="post">		
-		<table>
-			<tr>
-				<td>Nama Barang</td>
-				<td><input type="text" name="inamabarang"></td>					
-			</tr>	
-			<tr>
-				<td>jumlah</td>
-				<td><input type="text" name="ijumlah"></td>					
-			</tr>	
-			<tr>
-				<td>Spesifikasi</td>
-				<td><input type="text" name="ispesifikasi"></td>					
-			</tr>
-			<tr>
-				<td>Tgl pengadaan</td>
-				<td><input type="text" name="itgl"></td>					
-			</tr>	
-			<tr>
-				<td></td>
-				<td><input type="submit" value="Simpan"></td>					
-			</tr>				
-		</table>
-	</form>
 	<p>Halo <b><?php echo $_SESSION['username']; ?></b> Anda telah login sebagai <b><?php echo $_SESSION['level']; ?></b>.</p>
 	<a href="logout.php">LOGOUT</a>
 

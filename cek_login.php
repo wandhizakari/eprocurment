@@ -45,6 +45,13 @@ if($cek > 0){
 		// alihkan ke halaman dashboard purchasing
 		header("location:halaman_purchasing.php");
 
+	}else if($data['level']=="manajer"){
+		// buat session login dan username
+		$_SESSION['username'] = $username;
+		$_SESSION['level'] = "manajer";
+		// alihkan ke halaman dashboard purchasing
+		header("location:halaman_pengadaan_manajer.php");
+
 	}else{
 
 		// alihkan ke halaman login kembali
