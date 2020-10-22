@@ -28,8 +28,9 @@
 		echo'<p style="color:red">Gagal Memasukan data</p>';
 		}
 	}
+      $id = $_GET['id'];
       // query SQL menampilkan data dari table tbl_show
-      $sql = "SELECT * FROM pengadaan  WHERE status = 'approved'";
+      $sql = "SELECT * FROM pengadaan  WHERE id_pengadaan = '$id'";
       // tampung data (dalam array) kedalam variable $biodata
       $show = mysqli_query($koneksi, $sql);
       // variable untuk membuat tabel HTML
@@ -43,10 +44,10 @@
 	  $strTbl .= "<th>tanggal pengaaan</th>";
 	  $strTbl .= "<th>admin pengadaan</th>";
 	  $strTbl .= "<th>status</th>";
-      $strTbl .= "<th>Aksi</th>";
       $strTbl .= "</tr>";
       // variable nomor urut
       $nomor = 1;
+
       // cek apakah $show nilai kosong atau tidak
       if (mysqli_num_rows($show) > 0) {
         // jika ada looping untuk membaca seluruh data
@@ -61,7 +62,6 @@
 		  $strTbl .= "<td>". $data['tanggal_pengadaan'] ."</td>";
 		  $strTbl .= "<td>Wandhi</td>";
 		  $strTbl .= "<td>". $data['status'] ."</td>";
-          $strTbl .= "<td> <a href='halaman_detail_tender.php?id=".$data['id_pengadaan']."&status=approved'>Lihat Detail</a></td>";
           $strTbl .= "</tr>";
           $nomor++;
         }
@@ -74,6 +74,18 @@
       print($strTbl);
 		
 	?>
+	<h3>Input data baru</h3>
+	<form action="Fungsi/input_pengadaan.php" method="post">		
+		<table>
+				
+			<tr>
+				<td>Spesifikasi</td>
+				<td><input type="text" name="ispesifikasi"></td>					
+			</tr>
+				<td><input type="submit" value="Simpan"></td>					
+			</tr>				
+		</table>
+	</form>
 	<p>Halo <b><?php echo $_SESSION['username']; ?></b> Anda telah login sebagai <b><?php echo $_SESSION['level']; ?></b>.</p>
 	<a href="logout.php">LOGOUT</a>
 
