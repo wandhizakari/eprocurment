@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 22, 2020 at 03:18 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.31
+-- Host: 127.0.0.1
+-- Generation Time: Oct 22, 2020 at 05:16 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,11 +43,43 @@ CREATE TABLE `pengadaan` (
 --
 
 INSERT INTO `pengadaan` (`id_pengadaan`, `nama_barang`, `jumlah`, `spesifikasi`, `tanggal_pengadaan`, `admin_pengadaan`, `status`, `id_supplier`) VALUES
-(9, 'beras', 3, 'dipasok sebelum tanggal 20 oktober 2015', '12-10-2014', 1, 'approved', 0),
-(10, 'tahu', 3, 'dipasok sebelum tanggal 20 oktober 2015', '12-10-2014', 1, 'approved', 0),
-(11, 'dsa', 3, 'dipasok sebelum tanggal 20 oktober 2015', '12-10-2014', 1, 'approved', 0),
-(12, 'beras', 3, 'dipasok sebelum tanggal 20 oktober 2015', '12-10-2014', 1, 'approved', 0),
-(13, 'beras', 4, 'dipasok sebelum tanggal 21 oktober 2215', '12-10-2014', 1, 'approved', 0);
+(14, 'tempe', 2, 'harus basi', '12-10-2014', 1, 'approved', 0),
+(15, 'beras', 2, 'yang banyak kutunya', '12-10-2014', 1, 'approved', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
+--
+
+CREATE TABLE `supplier` (
+  `id_supplier` int(30) NOT NULL,
+  `nama_supplier` varchar(200) NOT NULL,
+  `alamat` text NOT NULL,
+  `tlp` varchar(15) NOT NULL,
+  `id_user` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `alamat`, `tlp`, `id_user`) VALUES
+(1, 'mandiri mandi sendiri', 'jl bkr no 14A, bandung', '0215876778', 3),
+(2, 'rumah react', 'jl central doom, cimahi kumuh', '08123345678', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tender`
+--
+
+CREATE TABLE `tender` (
+  `id_tender` int(30) NOT NULL,
+  `id_pengadaan` int(30) NOT NULL,
+  `penawaran` varchar(100) NOT NULL,
+  `harga` int(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -84,6 +116,18 @@ ALTER TABLE `pengadaan`
   ADD PRIMARY KEY (`id_pengadaan`);
 
 --
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`id_supplier`);
+
+--
+-- Indexes for table `tender`
+--
+ALTER TABLE `tender`
+  ADD PRIMARY KEY (`id_tender`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -97,7 +141,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pengadaan`
 --
 ALTER TABLE `pengadaan`
-  MODIFY `id_pengadaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_pengadaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `id_supplier` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tender`
+--
+ALTER TABLE `tender`
+  MODIFY `id_tender` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
